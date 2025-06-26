@@ -1,14 +1,13 @@
 import requests
 import sys
 
-
 class Pokemon:
     def __init__(self, pokemon_name):
         self.pokemon_name = pokemon_name
         self.attack = 0
-        self.spattack = 0
+        self.special_attack = 0
         self.defense = 0
-        self.spdefence = 0
+        self.special_defence = 0
         self.speed = 0
         self.pokemon_info = ""
         self.pokemon_sprite_forward = ""
@@ -23,22 +22,24 @@ class Pokemon:
             print(f"Unable to get data. Error {pokemon_info_request_url.status_code} please try again.")
             sys.exit(0)
         else:
-            return pokemon_info_request_url
+            return pokemon_info_request_url.json()
 
     def sort_pokemon_info(self):
         temp_info = self.get_pokemon_info()
-        self.pokemon_info = temp_info.json()
+        self.pokemon_info = self.get_pokemon_info()
+        print(self.pokemon_name)
         self.pokemon_sprite_shiny = self.pokemon_info["sprites"]["front_shiny"]
+
         print(self.pokemon_sprite_shiny)
 
 
 
 
-    def sort_pokemon_stats(self):
-        pass
+   # def sort_pokemon_stats(self):
+   #     pass
 
-    def sort_pokemon_types(self):
-        pass
+  #  def sort_pokemon_types(self):
+   #     pass
 
 
 
