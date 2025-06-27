@@ -38,13 +38,11 @@ def search():
         response = requests.get(pokemon.pokemon_sprite_shiny)
         pixmap = QPixmap()
         pixmap.loadFromData(response.content)
-
-        # Display the image
-        pokemon_shiny.setPixmap(pixmap)
+        pokemon_shiny_front.setPixmap(pixmap)
 
     except Exception as e:
         print(f"Error loading image: {e}")
-        pokemon_shiny.setText("Image not found.")
+        pokemon_shiny_front.setText("Image not found.")
 
 search_button.clicked.connect(search)
 
