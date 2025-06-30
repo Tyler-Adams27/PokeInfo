@@ -1,5 +1,4 @@
 import sys
-import requests
 from PyQt6.QtWidgets import QApplication, QLabel, QWidget, QLineEdit, QPushButton
 from PyQt6.QtGui import QPixmap, QFont
 from PyQt6.QtCore import Qt
