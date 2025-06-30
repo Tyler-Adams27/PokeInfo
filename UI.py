@@ -1,6 +1,6 @@
 import sys
 from PyQt6.QtWidgets import QApplication, QLabel, QWidget, QLineEdit, QPushButton
-from PyQt6.QtGui import QPixmap, QFont
+from PyQt6.QtGui import QPixmap, QFont, QMovie
 from get_pokemon_info import *
 
 app = QApplication([])
@@ -24,6 +24,7 @@ search_button.move(605, 200)
 pokemon_shiny_front = QLabel(parent=window)
 pokemon_shiny_front.setGeometry(540, 250, 200, 200)
 pokemon_shiny_front.setScaledContents(True)
+
 
 pokemon_normal_front = QLabel(parent=window)
 pokemon_normal_front.setGeometry(540, 250, 200, 200)
