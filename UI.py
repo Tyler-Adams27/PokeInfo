@@ -1,7 +1,6 @@
 import sys
 from PyQt6.QtWidgets import QApplication, QLabel, QWidget, QLineEdit, QPushButton
 from PyQt6.QtGui import QPixmap, QFont
-from PyQt6.QtCore import Qt
 from get_pokemon_info import *
 
 app = QApplication([])
@@ -32,7 +31,6 @@ pokemon_normal_front.setScaledContents(True)
 
 def search():
     pokemon = Pokemon(pokemon_name_input.text())
-    pokemon.sort_pokemon_info()
     try:
         response = requests.get(pokemon.pokemon_sprite_shiny)
         pixmap = QPixmap()
@@ -43,7 +41,7 @@ def search():
         print(f"Error loading image: {e}")
         pokemon_shiny_front.setText("Image not found.")
 
-search_button.clicked.connect(search)
+
 
 window.show()
 sys.exit(app.exec())
