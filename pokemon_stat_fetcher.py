@@ -11,6 +11,8 @@ class StatFetcher:
         self.special_defence = 000
         self.speed = 000
         self.total = 000
+        self.weight = 000
+        self.height = 000
 
     def get_stats(self):
         temp_pokemon = Pokemon(self.pokemon)
@@ -25,6 +27,8 @@ class StatFetcher:
             self.special_attack= info_temp["stats"][3]["base_stat"]
             self.special_defence = info_temp["stats"][4]["base_stat"]
             self.speed = info_temp["stats"][5]["base_stat"]
+            self.height = info_temp["height"]
+            self.weight = info_temp["weight"]
             self.total = int(self.hp) + int(self.attack) + int(self.defense) + int(self.special_attack) + int(self.special_defence) + int(self.speed)
 
             return None
