@@ -6,7 +6,6 @@ import links
 from get_pokemon_info import *
 from pokemon_image_fetcher import PokemonImage
 from pokemon_stat_fetcher import StatFetcher
-from links import open_github, open_linkedin
 
 app = QApplication([])
 window = QWidget()
