@@ -52,6 +52,9 @@ pokemon_shiny_back = QLabel(parent=window)
 pokemon_shiny_back.setGeometry(200, 450, 200, 200)
 pokemon_shiny_back.setScaledContents(True)
 
+
+
+
 stats_info = QLabel(f"Made By Tyler Adams.", parent=window)
 stats_info.move(1135,698)
 
@@ -110,8 +113,11 @@ def search_stats():
     height_stat.setText(f"Height = {pokemon_stats.height}")
 
 def full_search():
-    search_stats()
-    search_images()
+    if pokemon_name_input.text() == "":
+        pass
+    else:
+        search_stats()
+        search_images()
 
 search_button = QPushButton("Search!", parent=window)
 search_button.move(605, 200)
