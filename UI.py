@@ -51,9 +51,6 @@ pokemon_shiny_back = QLabel(parent=window)
 pokemon_shiny_back.setGeometry(200, 450, 200, 200)
 pokemon_shiny_back.setScaledContents(True)
 
-
-
-
 stats_info = QLabel(f"Made By Tyler Adams.", parent=window)
 stats_info.move(1135,698)
 
@@ -98,6 +95,7 @@ def search_images():
         pokemon_normal_front.setText("Pokemon not found.")
         pokemon_normal_back.setText("Pokemon not found.")
         pokemon_shiny_back.setText("Pokemon not found.")
+
 def search_stats():
     pokemon_stats = StatFetcher(pokemon_name_input.text())
     pokemon_stats.get_stats()
@@ -135,8 +133,6 @@ pfp = QLabel(parent=window)
 pfp.setGeometry(1150, 520, 100, 100)
 pfp.setScaledContents(True)
 pfp.setPixmap(pfp_image)
-
-
 
 window.show()
 sys.exit(app.exec())
