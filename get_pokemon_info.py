@@ -1,5 +1,5 @@
 import requests
-
+import global_var
 class Pokemon:
     def __init__(self, pokemon_name):
         self.pokemon_name = pokemon_name
@@ -12,13 +12,14 @@ class Pokemon:
         self.pokemon_sprite_forward = ""
         self.pokemon_sprite_backward = ""
         self.pokemon_sprite_shiny = ""
+        self.pokemon_exists = True
 
     def get_pokemon_info(self):
         base_url = "https://pokeapi.co/api/v2/"
         pokemon_name = self.pokemon_name
         pokemon_info_request_url = requests.get(f"{base_url}pokemon/{pokemon_name}")
         if pokemon_info_request_url.status_code != 200:
-            print(f"Unable to get data. Error {pokemon_info_request_url.status_code} please try again.")
+            global_var.pokemon_exists = False
             return None
         else:
             return pokemon_info_request_url.json()
