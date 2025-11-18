@@ -1,17 +1,20 @@
 import sys
 import links
 from PyQt6.QtWidgets import QApplication, QLabel, QWidget, QLineEdit, QPushButton
-from PyQt6.QtGui import QPixmap, QFont
+from PyQt6.QtGui import QPixmap, QFont, QIcon
 from get_pokemon_info import *
 from pokemon_image_fetcher import PokemonImage
 from pokemon_stat_fetcher import StatFetcher
 import global_var
 from popups import pokemon_does_not_exist
 
+version = "v1.0"
 app = QApplication([])
 window = QWidget()
 window.setWindowTitle("PokeInfo")
 window.setFixedSize(1280, 720)
+logo = QPixmap("./logo.png")
+window.setWindowIcon(QIcon(logo))
 title = QLabel("<b>PokeInfo</b>", parent=window)
 title.setFont(QFont("Arial", 30))
 title.move(580, 50)
@@ -40,17 +43,20 @@ height_stat.move(10, 170)
 pokemon_name_input = QLineEdit("ditto", parent=window)
 pokemon_name_input.move(580, 150)
 pokemon_shiny_front = QLabel(parent=window)
-pokemon_shiny_front.setGeometry(5, 550, 200, 200)
+pokemon_shiny_front.setGeometry(5, 500, 200, 200)
 pokemon_shiny_front.setScaledContents(True)
 pokemon_normal_front = QLabel(parent=window)
-pokemon_normal_front.setGeometry(5, 350, 200, 200)
+pokemon_normal_front.setGeometry(5, 300, 200, 200)
 pokemon_normal_front.setScaledContents(True)
 pokemon_normal_back = QLabel(parent=window)
-pokemon_normal_back.setGeometry(200, 350, 200, 200)
+pokemon_normal_back.setGeometry(200, 300, 200, 200)
 pokemon_normal_back.setScaledContents(True)
 pokemon_shiny_back = QLabel(parent=window)
-pokemon_shiny_back.setGeometry(200, 550, 200, 200)
+pokemon_shiny_back.setGeometry(200, 500, 200, 200)
 pokemon_shiny_back.setScaledContents(True)
+version_no = QLabel(f"{version}", parent=window)
+version_no.move(1250, 5)
+
 
 stats_info = QLabel(f"Made By Tyler Adams.", parent=window)
 stats_info.move(1135,698)
@@ -124,6 +130,7 @@ def search_stats():
         weight_stat.setText(f"Weight = {pokemon_stats.weight}")
         height_stat.setText(f"Height = {pokemon_stats.height}")
     else:
+        pokemon_does_not_exist(pokemon_name_input.text())
         hp_stat.setText(f"HP = ���")
         attack_stat.setText(f"Attack = ���")
         defence_stat.setText(f"Defence = ���")
@@ -149,6 +156,7 @@ def full_search():
 search_button = QPushButton("Search!", parent=window)
 search_button.move(605, 200)
 search_button.pressed.connect(full_search)
+
 
 github_button = QPushButton(" My GitHub ", parent=window)
 github_button.move(1150, 660)
