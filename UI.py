@@ -14,7 +14,7 @@ window = QWidget()
 window.setWindowTitle("PokeInfo")
 window.setFixedSize(1280, 720)
 logo = QPixmap("./logo.png")
-window.setWindowIcon(QIcon(logo))
+window.setWindowIcon(QIcon(logo))about:blank#blocked
 title = QLabel("<b>PokeInfo</b>", parent=window)
 title.setFont(QFont("Arial", 30))
 title.move(580, 50)

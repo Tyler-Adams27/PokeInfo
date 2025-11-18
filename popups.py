@@ -10,8 +10,3 @@ def pokemon_does_not_exist(name):
 
     window.exec()
 
-
-
-
-
-about:blank#blocked
