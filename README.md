@@ -10,6 +10,6 @@ It utilises the Pokemon API to take user input and display stats and images of t
 Here is an image of the UI:
 ![Image 1](img/1.png)
 
-This is a side project that introduced me to API's and filtering through JSON files to extract information.
+This is a side project that introduced me to APIs and filtering through JSON files to extract information.
 
-Current Version: 1.0.0 (Following Semantic Numbering)
+Current Version: 1.0.0 (Following Semantic Versioning)
