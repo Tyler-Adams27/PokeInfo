@@ -8,7 +8,7 @@ from pokemon_stat_fetcher import StatFetcher
 import global_var
 from popups import pokemon_does_not_exist
 
-version = "v1.0"
+version = "v1.1"
 app = QApplication([])
 window = QWidget()
 window.setWindowTitle("PokeInfo")
