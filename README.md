@@ -12,4 +12,4 @@ Here is an image of the UI:
 
 This is a side project that introduced me to APIs and filtering through JSON files to extract information.
 
-Current Version: 1.0.0 (Following Semantic Versioning)
+Current Version: 1.1
