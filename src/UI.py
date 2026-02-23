@@ -61,15 +61,13 @@ version_no.move(1250, 5)
 stats_info = QLabel(f"Made By Tyler Adams.", parent=window)
 stats_info.move(1135,698)
 
-init_pokemon = Pokemon(pokemon_name_input.text())
-init_stat = init_pokemon.get_pokemon_info(pokemon_name_input.text())
+
 
 
 def search_images(pokemon):
-    pokemon_images = PokemonImage(init_pokemon)
     try:
         if global_var.pokemon_exists:
-            image_url_shiny = pokemon_images.get_shiny_image(pokemon)
+            image_url_shiny = PokemonImage.get_shiny_image(pokemon)
             response_shiny = requests.get(image_url_shiny)
             response_shiny.raise_for_status()
 
@@ -77,7 +75,7 @@ def search_images(pokemon):
             pixmap.loadFromData(response_shiny.content)
             pokemon_shiny_front.setPixmap(pixmap)
 
-            image_url_normal = pokemon_images.get_normal_image(pokemon)
+            image_url_normal = PokemonImage.get_normal_image(pokemon)
             response_normal = requests.get(image_url_normal)
             response_normal.raise_for_status()
 
@@ -85,7 +83,7 @@ def search_images(pokemon):
             pixmap.loadFromData(response_normal.content)
             pokemon_normal_front.setPixmap(pixmap)
 
-            image_url_shiny_back = pokemon_images.get_shiny_image_back(pokemon)
+            image_url_shiny_back = PokemonImage.get_shiny_image_back(pokemon)
             response_shiny_back = requests.get(image_url_shiny_back)
             response_shiny_back.raise_for_status()
 
@@ -93,28 +91,16 @@ def search_images(pokemon):
             pixmap.loadFromData(response_shiny_back.content)
             pokemon_shiny_back.setPixmap(pixmap)
 
-            image_url_normal_back = pokemon_images.get_normal_image_back(pokemon)
+            image_url_normal_back = PokemonImage.get_normal_image_back(pokemon)
             response_normal_back = requests.get(image_url_normal_back)
             response_normal_back.raise_for_status()
 
             pixmap = QPixmap()
             pixmap.loadFromData(response_normal_back.content)
-
-            
-        if not global_var.pokemon_exists:
-
-            
-            pixmap = QPixmap("missingno.png")
             pokemon_normal_back.setPixmap(pixmap)
 
-            pixmap = QPixmap("missingno.png")
-            pokemon_normal_front.setPixmap(pixmap)
+            
 
-            pixmap = QPixmap("missingno.png")
-            pokemon_shiny_back.setPixmap(pixmap)
-
-            pixmap = QPixmap("missingno.png")
-            pokemon_shiny_front.setPixmap(pixmap)
 
     except Exception as e:
         print(f"Error loading image: {e}")
@@ -145,16 +131,19 @@ def search_stats(pokemon):
         height_stat.setText(f"Height = ��")
 
 def full_search():
-    pokemoninit = Pokemon(pokemon_name_input.text())
-    pokemon = pokemoninit.get_pokemon_info(pokemon_name_input.text())
+    
+
 
 
     if global_var.pokemon_exists == False:
         pokemon_does_not_exist(pokemon_name_input.text())
     elif pokemon_name_input.text() == "":
-        global_var.pokemon_exists == False
-
+        global_var.pokemon_exists = False
+        pass
+    
     else:
+        pokemoninit = Pokemon(pokemon_name_input.text())
+        pokemon = pokemoninit.get_pokemon_info(pokemon_name_input.text())
         search_stats(pokemon)
         search_images(pokemon)
 
