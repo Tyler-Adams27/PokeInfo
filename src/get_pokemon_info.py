@@ -1,5 +1,10 @@
 import requests
 import global_var
+
+"""
+The base Pokemon class with functions to call the Pokemon API.
+"""
+
 class Pokemon:
     def __init__(self, pokemon_name):
         self.pokemon_name = pokemon_name

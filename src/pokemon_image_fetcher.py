@@ -1,6 +1,8 @@
 from get_pokemon_info import Pokemon
 
-
+"""
+Fetches images of the pokemon from the Pokemon API.
+"""
 
 class PokemonImage:
     def get_normal_image(pokemon):

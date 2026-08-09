@@ -1,5 +1,8 @@
 from get_pokemon_info import Pokemon
 
+"""
+Fetches stats from the JSON provided by the Pokemon API.
+"""
 
 class StatFetcher:
     def __init__(self, pokemon):
@@ -28,7 +31,6 @@ class StatFetcher:
             self.height = pokemon["height"]
             self.weight = pokemon["weight"]
             self.total = int(self.hp) + int(self.attack) + int(self.defense) + int(self.special_attack) + int(self.special_defence) + int(self.speed)
-
             return None
 
 

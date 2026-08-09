@@ -2,12 +2,14 @@ import sys
 import links
 from PyQt6.QtWidgets import QApplication, QLabel, QWidget, QLineEdit, QPushButton
 from PyQt6.QtGui import QPixmap, QFont, QIcon
-from get_pokemon_info import *
 from pokemon_image_fetcher import PokemonImage
 from pokemon_stat_fetcher import StatFetcher
 import global_var
 from popups import pokemon_does_not_exist
 
+"""
+The UI component, and the entry point of the application.
+"""
 version = "v1.1"
 app = QApplication([])
 window = QWidget()
@@ -57,12 +59,8 @@ pokemon_shiny_back.setScaledContents(True)
 version_no = QLabel(f"{version}", parent=window)
 version_no.move(1250, 5)
 
-
 stats_info = QLabel(f"Made By Tyler Adams.", parent=window)
 stats_info.move(1135,698)
-
-
-
 
 def search_images(pokemon):
     try:
@@ -99,9 +97,6 @@ def search_images(pokemon):
             pixmap.loadFromData(response_normal_back.content)
             pokemon_normal_back.setPixmap(pixmap)
 
-            
-
-
     except Exception as e:
         print(f"Error loading image: {e}")
 
@@ -120,21 +115,18 @@ def search_stats(pokemon):
         height_stat.setText(f"Height = {pokemon_stats.height}")
     else:
         pokemon_does_not_exist(pokemon_name_input.text())
-        hp_stat.setText(f"HP = ���")
-        attack_stat.setText(f"Attack = ���")
-        defence_stat.setText(f"Defence = ���")
-        sp_attack_stat.setText(f"Special Attack = ���")
-        sp_defence_stat.setText(f"Special Defence = ���")
-        speed_stat.setText(f"Speed = ���")
-        total_stat.setText(f"Total Stats = ��")
-        weight_stat.setText(f"Weight = ��")
-        height_stat.setText(f"Height = ��")
+        hp_stat.setText("HP = ���")
+        attack_stat.setText("Attack = ���")
+        defence_stat.setText("Defence = ���")
+        sp_attack_stat.setText("Special Attack = ���")
+        sp_defence_stat.setText("Special Defence = ���")
+        speed_stat.setText("Speed = ���")
+        total_stat.setText("Total Stats = ��")
+        weight_stat.setText("Weight = ��")
+        height_stat.setText("Height = ��")
 
 def full_search():
     
-
-
-
     if global_var.pokemon_exists == False:
         pokemon_does_not_exist(pokemon_name_input.text())
     elif pokemon_name_input.text() == "":
@@ -147,12 +139,9 @@ def full_search():
         search_stats(pokemon)
         search_images(pokemon)
 
-
-
 search_button = QPushButton("Search!", parent=window)
 search_button.move(605, 200)
 search_button.pressed.connect(full_search)
-
 
 github_button = QPushButton(" My GitHub ", parent=window)
 github_button.move(1150, 660)

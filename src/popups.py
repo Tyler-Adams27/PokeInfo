@@ -1,6 +1,13 @@
 from PyQt6.QtWidgets import QPushButton, QMessageBox
 from PyQt6 import QtWidgets
 
+"""
+Popups:
+
+When a pokemon does not exist.
+When user attempts to search an empty string.
+
+"""
 
 def pokemon_does_not_exist(name):
     if name == "":
@@ -13,7 +20,5 @@ def pokemon_does_not_exist(name):
         window.setText(f"The Pokemon {name} does not exist. Please try again.")
         window.setWindowTitle("Info")
         window.setIcon(QMessageBox.Icon.Information)
-
-
     window.exec()
 
