@@ -1,3 +1,7 @@
+"""
+The UI component, and the entry point of the application.
+"""
+
 import sys
 import links
 from PyQt6.QtWidgets import QApplication, QLabel, QWidget, QLineEdit, QPushButton
@@ -7,9 +11,6 @@ from pokemon_stat_fetcher import StatFetcher
 import global_var
 from popups import pokemon_does_not_exist
 
-"""
-The UI component, and the entry point of the application.
-"""
 version = "v1.1"
 app = QApplication([])
 window = QWidget()
@@ -64,7 +65,7 @@ stats_info.move(1135,698)
 
 def search_images(pokemon):
     try:
-        if global_var.pokemon_exists:
+        if global_var.POKEMON_EXISTS:
             image_url_shiny = PokemonImage.get_shiny_image(pokemon)
             response_shiny = requests.get(image_url_shiny)
             response_shiny.raise_for_status()
@@ -103,7 +104,7 @@ def search_images(pokemon):
 def search_stats(pokemon):
     pokemon_stats = StatFetcher(pokemon)
     pokemon_stats.get_stats(pokemon)
-    if global_var.pokemon_exists:
+    if global_var.POKEMON_EXISTS:
         hp_stat.setText(f"HP = {pokemon_stats.hp}")
         attack_stat.setText(f"Attack = {pokemon_stats.attack}")
         defence_stat.setText(f"Defence = {pokemon_stats.defense}")
@@ -127,10 +128,10 @@ def search_stats(pokemon):
 
 def full_search():
     
-    if global_var.pokemon_exists == False:
+    if global_var.POKEMON_EXISTS == False:
         pokemon_does_not_exist(pokemon_name_input.text())
     elif pokemon_name_input.text() == "":
-        global_var.pokemon_exists = False
+        global_var.POKEMON_EXISTS = False
         pass
     
     else:

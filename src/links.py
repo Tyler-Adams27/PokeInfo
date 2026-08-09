@@ -1,9 +1,8 @@
-import webbrowser
-
 """
 Specifies links that a user can press, and will open browser.
 
 """
+import webbrowser
 
 my_github = "https://github.com/Tyler-Adams27"
 my_linkedin = "https://www.linkedin.com/in/tyler-adams-10930335a/"

@@ -1,8 +1,8 @@
-from get_pokemon_info import Pokemon
-
 """
 Fetches stats from the JSON provided by the Pokemon API.
 """
+
+from get_pokemon_info import Pokemon
 
 class StatFetcher:
     def __init__(self, pokemon):

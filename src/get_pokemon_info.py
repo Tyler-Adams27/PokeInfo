@@ -1,9 +1,9 @@
-import requests
-import global_var
-
 """
 The base Pokemon class with functions to call the Pokemon API.
 """
+
+import requests
+import global_var
 
 class Pokemon:
     def __init__(self, pokemon_name):
@@ -25,10 +25,9 @@ class Pokemon:
 
         pokemon_info_request_url = requests.get(f"{base_url}pokemon/{pokemon}")
         if pokemon_info_request_url.status_code != 200:
-            global_var.pokemon_exists = False
+            global_var.POKEMON_EXISTS = False
             return None
 
         else:
-            global_var.pokemon_exists = True
+            global_var.POKEMON_EXISTS = True
             return pokemon_info_request_url.json()
-
